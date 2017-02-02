@@ -9,15 +9,17 @@ matrix:
       env: CFLAGS="-O3 -arch x86_64 -arch i386" CXXFLAGS="-O3 -arch x86_64 -arch i386" CPPFLAGS=-DNDEBUG
     - os: osx
       compiler: clang
-script: ./configure --prefix=$TRAVIS_BUILD_DIR/$TRAVIS_OS_NAME && make && make test && make install
-before_deploy: cd $TRAVIS_BUILD_DIR && zip -r $TRAVIS_OS_NAME.zip $TRAVIS_OS_NAME
+script: ./ci_build.sh
+before_deploy: . ./ci_deploy.sh
 deploy:
   provider: releases
   api_key:
     secure: BCcQyI6kvb+cAml4p6uCjr2aUY5QewBJAneT7OK5r19XlE1dYq+X4gtZxjf4BZVC53qPEbRENztkY+rfDzSmAF1NQk4t3N7nhlaKwqZLrhxMaADjaax5OXwBe4t1PtJbkZd32R3agCFM8wimWndJyJDQHFMKH6a0JJLZNzL5welYYDdUyXF88IrxKYixX5ZAoZiIW/XKh6PQYVUGb3qtSyZJkAavtm3EjJfatTn0Vv3w+ykCANdLMQzs35GGa0kuT2wlSY1tlNHWJE6io++H943XpCuZXz8MPH9+1x7x7qB6SjEwMOvgJDBrWxHT4jhU0fUu3yRPVFQu1DpwlAxyk3jJWx9OepIsXEv9vf810RwVezlxSIXtQbUhRiHgnj9m7EFWAk97vuCNZ0iVAVlQ829adCpwpEUcjO5lyHAqcKlx/p0M5LlylRuMaoIlxH2NsaA6oEHUCMmvfVqmEMQoo0PFqpPmEV/gUgkb21cp88iz6iiykBTrZDD+Von2gQexYY/DDKBI6Bh7zUGHM0RklrEaYxlWHYOmA7RcyjP8q1bMy0dpEPOCvnUFTcerKFEK1cH/aDqu6aKATwr4yZ8zA+5m+kWzM9fhdFJJQ6NMFTtDcwjSySf64N+DjAGKdm+K5X9eWpKE4M8+en4Hgel0KBBHArwAReEqsOExP4TvmBc=
-  file: $TRAVIS_BUILD_DIR/$TRAVIS_OS_NAME.zip
+  file_glob: true
+  file: "dist/*"
   skip_cleanup: true
   on:
-    condition: "$CC = gcc"
+    condition: "$TRAVIS_OS_NAME =~ (osx)"
+    branch: master
     repo: jeffdaily/travis-broken-example
     tags: true
