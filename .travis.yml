@@ -1,6 +1,15 @@
-language: php
-php:
-  - 5.5
-  - 5.4
-  - hhvm
-script: phpunit Test.php
+language: c
+os:
+- linux
+- osx
+compiler:
+- gcc
+- clang
+deploy:
+  provider: releases
+  api_key:
+    secure: BCcQyI6kvb+cAml4p6uCjr2aUY5QewBJAneT7OK5r19XlE1dYq+X4gtZxjf4BZVC53qPEbRENztkY+rfDzSmAF1NQk4t3N7nhlaKwqZLrhxMaADjaax5OXwBe4t1PtJbkZd32R3agCFM8wimWndJyJDQHFMKH6a0JJLZNzL5welYYDdUyXF88IrxKYixX5ZAoZiIW/XKh6PQYVUGb3qtSyZJkAavtm3EjJfatTn0Vv3w+ykCANdLMQzs35GGa0kuT2wlSY1tlNHWJE6io++H943XpCuZXz8MPH9+1x7x7qB6SjEwMOvgJDBrWxHT4jhU0fUu3yRPVFQu1DpwlAxyk3jJWx9OepIsXEv9vf810RwVezlxSIXtQbUhRiHgnj9m7EFWAk97vuCNZ0iVAVlQ829adCpwpEUcjO5lyHAqcKlx/p0M5LlylRuMaoIlxH2NsaA6oEHUCMmvfVqmEMQoo0PFqpPmEV/gUgkb21cp88iz6iiykBTrZDD+Von2gQexYY/DDKBI6Bh7zUGHM0RklrEaYxlWHYOmA7RcyjP8q1bMy0dpEPOCvnUFTcerKFEK1cH/aDqu6aKATwr4yZ8zA+5m+kWzM9fhdFJJQ6NMFTtDcwjSySf64N+DjAGKdm+K5X9eWpKE4M8+en4Hgel0KBBHArwAReEqsOExP4TvmBc=
+  file: hello
+  on:
+    repo: jeffdaily/travis-broken-example
+    tags: true
