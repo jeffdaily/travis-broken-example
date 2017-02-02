@@ -10,3 +10,6 @@ libdummy_la_SOURCES = dummy.c
 run_dummy_SOURCES = run_dummy.c
 
 TESTS = run_dummy
+
+# alias for 'make check' using 'make test'
+test: check
