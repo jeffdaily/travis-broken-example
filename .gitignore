@@ -1,1 +1,3 @@
-hello
+autom4te.cache/*
+bld*
+dummy
