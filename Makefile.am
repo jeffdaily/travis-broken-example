@@ -3,7 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
 include_HEADERS = dummy.h
 lib_LTLIBRARIES = libdummy.la
 bin_PROGRAMS = run_dummy
-LDFLAGS = libdummy.la
+LDADD = libdummy.la
 
 libdummy_la_SOURCES = dummy.c
 
