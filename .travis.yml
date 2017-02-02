@@ -9,7 +9,7 @@ matrix:
       env: CFLAGS="-O3 -arch x86_64 -arch i386" CXXFLAGS="-O3 -arch x86_64 -arch i386" CPPFLAGS=-DNDEBUG
     - os: osx
       compiler: clang
-script: configure --prefix=$TRAVIS_BUILD_DIR/$TRAVIS_OS_NAME && make && make test && make install
+script: ./configure --prefix=$TRAVIS_BUILD_DIR/$TRAVIS_OS_NAME && make && make test && make install
 before_deploy: cd $TRAVIS_BUILD_DIR && zip -r $TRAVIS_OS_NAME.zip $TRAVIS_OS_NAME
 deploy:
   provider: releases
