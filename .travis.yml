@@ -1,16 +1,31 @@
+# Travis CI script
+
 language: c
+
 matrix:
   include:
     - os: linux
       compiler: gcc
-      env: CFLAGS=-O3 CPPFLAGS=-DNDEBUG
-    - os: osx
-      compiler: gcc
-      env: CFLAGS="-O3 -arch x86_64 -arch i386" CXXFLAGS="-O3 -arch x86_64 -arch i386" CPPFLAGS=-DNDEBUG
-    - os: osx
+    - os: linux
       compiler: clang
+    - os: osx
+      osx_image: xcode6.4
+      compiler: gcc
+    - os: osx
+      osx_image: xcode7.3
+      compiler: gcc
+    - os: osx
+      osx_image: xcode8.2
+      compiler: gcc
+
+before_install:
+- if [ $TRAVIS_OS_NAME == "osx" ] ; then brew update ; fi
+- if [ $TRAVIS_OS_NAME == "osx" ] ; then brew install mdsha1sum ; fi
+
 script: ./ci_build.sh
+
 before_deploy: . ./ci_deploy.sh
+
 deploy:
   provider: releases
   api_key:
