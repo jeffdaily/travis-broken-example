@@ -21,11 +21,11 @@ mv $BINNAME.zip dist
 
 # Generate hash sums
 cd dist
-md5sum $BINNAME.zip     > $BINNAME.zip.md5
-md5sum $SRCNAME.zip     > $SRCNAME.zip.md5
-md5sum $SRCNAME.tar.gz  > $SRCNAME.tar.gz.md5
-sha1sum $BINNAME.zip    > $BINNAME.zip.sha1
-sha1sum $SRCNAME.zip    > $SRCNAME.zip.sha1
-sha1sum $SRCNAME.tar.gz > $SRCNAME.tar.gz.sha1
+md5 -r $BINNAME.zip     > $BINNAME.zip.md5
+md5 -r $SRCNAME.zip     > $SRCNAME.zip.md5
+md5 -r $SRCNAME.tar.gz  > $SRCNAME.tar.gz.md5
+shasum -a 1 $BINNAME.zip    > $BINNAME.zip.sha1
+shasum -a 1 $SRCNAME.zip    > $SRCNAME.zip.sha1
+shasum -a 1 $SRCNAME.tar.gz > $SRCNAME.tar.gz.sha1
 cd -
 

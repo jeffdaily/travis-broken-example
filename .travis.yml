@@ -18,10 +18,6 @@ matrix:
       osx_image: xcode8.2
       compiler: gcc
 
-before_install:
-- if [ $TRAVIS_OS_NAME == "osx" ] ; then brew update ; fi
-- if [ $TRAVIS_OS_NAME == "osx" ] ; then brew install md5sha1sum ; fi
-
 script: ./ci_build.sh
 
 before_deploy: . ./ci_deploy.sh
