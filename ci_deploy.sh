@@ -10,7 +10,7 @@ mv *.zip dist
 
 PLATFORM=`python -c "import distutils.util as u; print(u.get_platform())"`
 PACKAGE=dummy
-VERSION=`version.sh`
+VERSION=`./version.sh`
 BINNAME=$PACKAGE-$VERSION-$PLATFORM
 SRCNAME=$PACKAGE-$VERSION
 
