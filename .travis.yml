@@ -22,6 +22,8 @@ script: ./ci_build.sh
 
 before_deploy: . ./ci_deploy.sh
 
+install: "set -e\nif [ \"$TRAVIS_OS_NAME\" == \"osx\" ]; then\n  rvm get stable\nfi\n"
+
 deploy:
   provider: releases
   api_key:
