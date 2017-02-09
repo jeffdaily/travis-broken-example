@@ -3,7 +3,7 @@
 
 #define DUMMY_VERSION_MAJOR 0
 #define DUMMY_VERSION_MINOR 4
-#define DUMMY_VERSION_PATCH 4
+#define DUMMY_VERSION_PATCH 5
 
 #ifdef __cplusplus
 extern "C" {
